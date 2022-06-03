@@ -1,0 +1,28 @@
+<!-- template driven form -->
+<div class="container">
+  <form #add="ngForm" (ngSubmit)="handleSubmit(add)">
+
+      <div class="row gy-4">
+          <div class="col-12 col-md-6">
+              <input type="text" class="form-control" placeholder="enter your Name" [(ngModel)]="model.name"
+                  name="name" #name="ngModel" required minlength="3">
+              <div class="alert alert-danger" *ngIf="add.submitted && name.invalid">
+
+                  <div *ngIf="name.errors?.['required']">
+                      name is required
+                  </div>
+                  <div *ngIf="name.errors?.['minlength']">
+                      minLength = 3
+                  </div>
+              </div>
+          </div>
+
+
+
+          <div class="col-4">
+              <button class="btn btn-primary">Add</button>
+          </div>
+      </div>
+  </form>
+</div>
+
